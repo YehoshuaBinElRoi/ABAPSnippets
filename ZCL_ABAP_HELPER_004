@@ -1,0 +1,522 @@
+class ZCL_ABAP_HELPER_004 definition
+  public
+  create public .
+
+public section.
+
+  types:
+    range_period TYPE RANGE OF spmon .
+  types:
+    line_period TYPE LINE OF range_period .
+  types:
+    BEGIN OF elementary_fld_desc_line,
+        index TYPE i.
+            INCLUDE TYPE abap_compdescr.
+    TYPES: END OF elementary_fld_desc_line .
+  types:
+    elementary_fld_desc TYPE SORTED TABLE OF elementary_fld_desc_line WITH UNIQUE KEY index .
+
+  constants SUBMIT_TYPE_REPORT_ALV type NUMC2 value '01' ##NO_TEXT.
+  constants SUBMIT_TYPE_REPORT_LIST type NUMC2 value '02' ##NO_TEXT.
+  constants SUBMIT_TYPE_REPORT_IMPORT type NUMC2 value '03' ##NO_TEXT.
+
+  class-methods CALL_REPORT_GET_OUTPUT
+    importing
+      !REPORT_NAME type PROGRAMM
+      !PARAMETERS type RSPARAMS_TT
+      !MEMORY_ID_REPORT_OUTPUT type CHAR30 optional
+      !SUBMIT_TYPE type NUMC2 default SUBMIT_TYPE_REPORT_ALV
+    exporting
+      value(OUTPUT_DATA) type ref to DATA
+    raising
+      CX_SALV_BS_SC_RUNTIME_INFO
+      ZCX_STAT_GEN_EXCEPTION .
+  class-methods EXPORT_DATA_AND_TYPE_TO_MEMORY
+    importing
+      !DATA_TABLE type ANY TABLE optional
+      !DATA type ANY optional
+      !MEMORY_ID type CHAR30 .
+  class-methods CREATE_ITAB_DYNAMIC
+    importing
+      !TYPE_NAME type ABAP_ABSTYPENAME optional
+      !STRUCTURES type FAGL_TABNAME_RANGE optional
+      !COMPONENTS type CL_ABAP_STRUCTDESCR=>COMPONENT_TABLE optional
+      !ELEMENTARY_COMPONENTS type ELEMENTARY_FLD_DESC optional
+    returning
+      value(TABREF) type ref to DATA .
+  class-methods GET_ELEMENT_DESCRIPTOR
+    importing
+      !ELEMENTARY_COMPONENT type ELEMENTARY_FLD_DESC_LINE
+    returning
+      value(ELEMENT_DESCRIPTOR) type ref to CL_ABAP_ELEMDESCR .
+  class-methods F4HELP_PERIOD
+    importing
+      !FIELD_TO_UPDATE type CHAR04 default 'LOW'
+    changing
+      !PERIODS type RANGE_PERIOD
+      !PERIOD type LINE_PERIOD .
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>CALL_REPORT_GET_OUTPUT
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] REPORT_NAME                    TYPE        PROGRAMM
+* | [--->] PARAMETERS                     TYPE        RSPARAMS_TT
+* | [--->] MEMORY_ID_REPORT_OUTPUT        TYPE        CHAR30(optional)
+* | [--->] SUBMIT_TYPE                    TYPE        NUMC2 (default =SUBMIT_TYPE_REPORT_ALV)
+* | [<---] OUTPUT_DATA                    TYPE REF TO DATA
+* | [!CX!] CX_SALV_BS_SC_RUNTIME_INFO
+* | [!CX!] ZCX_STAT_GEN_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD call_report_get_output.
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      21 Jul 2026                                               *
+* Reference Change/Incident:  5000008297                               *
+* Change Indicator: 5000008297-Joshua-00000000                         *
+* Description: Call an ABAP report and return the output               *
+*----------------------------------------------------------------------*
+*-------------------------CHANGE HISTORY-------------------------------*
+*----------------------------------------------------------------------*
+* Developer:                                                           *
+* Date:                                                                *
+* Reference Change/Incident:                                           *
+* Change Indicator:                                                    *
+* Description:                                                         *
+*----------------------------------------------------------------------*
+
+*>>>Start of Changes-5000008297-Joshua-00000000-21 Jul 2026
+
+
+
+    IF submit_type = submit_type_report_alv.
+      "Set parameters to suppress display of ALV but return the data
+      cl_salv_bs_runtime_info=>set(
+        display = abap_false
+        metadata = abap_false
+        data = abap_true
+      ).
+
+      "Call the report
+      SUBMIT (report_name)
+      WITH SELECTION-TABLE parameters[]
+      AND RETURN.                                        "#EC CI_SUBMIT
+
+      "Get a reference of the output
+      cl_salv_bs_runtime_info=>get_data_ref(
+      IMPORTING
+        "r_data = DATA(output_ref)
+        r_data = output_data
+      ).
+
+      "Clear the settings which prevent ALV display
+      cl_salv_bs_runtime_info=>clear_all( ).
+
+*****      "Get the output data and pass it back to caller
+*****      ASSIGN output_ref->* TO FIELD-SYMBOL(<output_fs>).
+*****      output_data = <output_fs>.
+    ELSEIF submit_type = submit_type_report_list.
+      DATA: abap_list  TYPE table_abaplist,
+            ascii_list TYPE STANDARD TABLE OF text1024.
+
+      "Call the report
+      SUBMIT (report_name)
+      WITH SELECTION-TABLE parameters[]
+      EXPORTING LIST TO MEMORY
+      AND RETURN.                                        "#EC CI_SUBMIT
+
+      "Get the output
+      CALL FUNCTION 'LIST_FROM_MEMORY'
+        TABLES
+          listobject = abap_list
+*       EXCEPTIONS
+*         NOT_FOUND  = 1
+*         OTHERS     = 2
+        .
+      IF sy-subrc <> 0.
+        RAISE EXCEPTION TYPE zcx_stat_gen_exception
+          EXPORTING
+            textid = VALUE #(
+                        msgid = sy-msgid
+                        msgno = sy-msgno
+                        attr1 = zcx_stat_gen_exception=>gc_attr_msgv1
+                        attr2 = zcx_stat_gen_exception=>gc_attr_msgv2
+                        attr3 = zcx_stat_gen_exception=>gc_attr_msgv3
+                        attr4 = zcx_stat_gen_exception=>gc_attr_msgv4
+            )
+            msgv1  = sy-msgv1
+            msgv2  = sy-msgv2
+            msgv3  = sy-msgv3
+            msgv4  = sy-msgv4.
+      ELSE.
+        CALL FUNCTION 'LIST_TO_ASCI'
+*         EXPORTING
+*           LIST_INDEX               = -1
+*           WITH_LINE_BREAK          = ' '
+*         IMPORTING
+*           LIST_STRING_ASCII        =
+*           LIST_DYN_ASCII           =
+          TABLES
+            listasci           = ascii_list
+            listobject         = abap_list
+          EXCEPTIONS
+            empty_list         = 1
+            list_index_invalid = 2
+            OTHERS             = 3.
+        IF sy-subrc <> 0.
+          RAISE EXCEPTION TYPE zcx_stat_gen_exception
+            EXPORTING
+              textid = VALUE #(
+                          msgid = sy-msgid
+                          msgno = sy-msgno
+                          attr1 = zcx_stat_gen_exception=>gc_attr_msgv1
+                          attr2 = zcx_stat_gen_exception=>gc_attr_msgv2
+                          attr3 = zcx_stat_gen_exception=>gc_attr_msgv3
+                          attr4 = zcx_stat_gen_exception=>gc_attr_msgv4
+              )
+              msgv1  = sy-msgv1
+              msgv2  = sy-msgv2
+              msgv3  = sy-msgv3
+              msgv4  = sy-msgv4.
+        ELSE.
+          output_data = REF #( ascii_list ).
+        ENDIF.
+
+      ENDIF.
+
+    ELSEIF submit_type = submit_type_report_import.
+      "Call the report
+      SUBMIT (report_name)
+      WITH SELECTION-TABLE parameters[]
+      EXPORTING LIST TO MEMORY
+      AND RETURN.                                        "#EC CI_SUBMIT
+
+      "Assumption:
+      "The report being called has the below call
+      "ZCL_ABAP_HELPER_004=>EXPORT_DATA_AND_TYPE_TO_MEMORY( ... ).
+
+
+      "Get the type of the data
+      DATA: component_list TYPE elementary_fld_desc.
+      IMPORT component_list = component_list FROM MEMORY ID memory_id_report_output.
+
+      "Create a sample internal table of same type
+      output_data = create_itab_dynamic( elementary_components = component_list ).
+      ASSIGN output_data->* TO FIELD-SYMBOL(<output_fs>).
+
+      "Import the data into the created internal table
+      IMPORT data = <output_fs> FROM MEMORY ID memory_id_report_output.
+
+*****      output_data = REF #( <output_fs> ).
+
+    ELSE.
+    ENDIF.
+*<<<End of Changes-5000008297-Joshua-00000000-21 Jul 2026
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>CREATE_ITAB_DYNAMIC
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] TYPE_NAME                      TYPE        ABAP_ABSTYPENAME(optional)
+* | [--->] STRUCTURES                     TYPE        FAGL_TABNAME_RANGE(optional)
+* | [--->] COMPONENTS                     TYPE        CL_ABAP_STRUCTDESCR=>COMPONENT_TABLE(optional)
+* | [--->] ELEMENTARY_COMPONENTS          TYPE        ELEMENTARY_FLD_DESC(optional)
+* | [<-()] TABREF                         TYPE REF TO DATA
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD create_itab_dynamic.
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      3rd Feb 2026                                              *
+* Reference Change/Incident:  NNNN                                     *
+* Change Indicator: NNNN-Joshua-00000000                               *
+* Description: Dynamically create an internal table                    *
+*----------------------------------------------------------------------*
+*-------------------------CHANGE HISTORY-------------------------------*
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      25th Feb 2026                                             *
+* Reference Change/Incident:  5000008261                               *
+* Change Indicator: 5000008261-Joshua-00000000                         *
+* Description: Accept component list containing individual fields as   *
+*              input                                                   *
+*----------------------------------------------------------------------*
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      21 Jul 2026                                               *
+* Reference Change/Incident:  5000008297                               *
+* Change Indicator: 5000008297-Joshua-00000000                         *
+* Description: Create internal table using type name, elementary       *
+*              component list                                          *
+*----------------------------------------------------------------------*
+
+*>>>Start of Changes-NNNN-Joshua-00000000-3rd Feb 2026
+    DATA: lt_components         TYPE cl_abap_structdescr=>component_table,
+
+          lo_struct_nested      TYPE REF TO cl_abap_structdescr,
+          lo_struct_out         TYPE REF TO cl_abap_structdescr,
+          lo_struct_out_dataref TYPE REF TO data.
+
+    FIELD-SYMBOLS: <lfs_struct_out> TYPE any.
+
+*>>>Start of Changes-5000008220-Joshua-00000000-25th Feb 2026
+    IF components IS SUPPLIED AND
+       components IS NOT INITIAL. "If field list is provided, use it
+      lt_components = components.
+    ELSEIF structures IS SUPPLIED AND
+           structures IS NOT INITIAL.
+*<<<End of Changes-5000008220-Joshua-00000000-25th Feb 2026
+      "Construct a table of components
+      LOOP AT structures INTO DATA(ls_structures).
+        DATA(lv_idx) = sy-tabix.
+        lo_struct_nested ?= cl_abap_typedescr=>describe_by_name( ls_structures-low ).
+        lt_components = VALUE #( BASE lt_components
+          (
+            name = |INCL_{ lv_idx }|
+            type = lo_struct_nested
+            as_include = abap_true
+          )
+        ).
+      ENDLOOP.
+*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+    ELSEIF type_name IS NOT INITIAL.
+      lo_struct_out ?= cl_abap_typedescr=>describe_by_name( type_name ).
+      lt_components = lo_struct_out->get_components( ).
+    ELSEIF elementary_components IS NOT INITIAL."If elementary component list is provided
+      "Get a RTTS reference of each component
+      lt_components = VALUE #(
+        FOR element IN elementary_components
+        (
+          name = element-name
+          type = get_element_descriptor( element )
+        )
+      ).
+*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+    ENDIF.
+    "Construct the structure type which includes the individual structures
+    lo_struct_out = cl_abap_structdescr=>create( lt_components ).
+    CREATE DATA lo_struct_out_dataref TYPE HANDLE lo_struct_out.
+    ASSIGN lo_struct_out_dataref->* TO <lfs_struct_out>.
+    "Construct the table type
+    CREATE DATA tabref LIKE TABLE OF <lfs_struct_out>.
+
+*<<<End of Changes-NNNN-Joshua-00000000-3rd Feb 2026
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>EXPORT_DATA_AND_TYPE_TO_MEMORY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] DATA_TABLE                     TYPE        ANY TABLE(optional)
+* | [--->] DATA                           TYPE        ANY(optional)
+* | [--->] MEMORY_ID                      TYPE        CHAR30
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD export_data_and_type_to_memory.
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      21 Jul 2026                                               *
+* Reference Change/Incident:  5000008297                               *
+* Change Indicator: 5000008297-Joshua-00000000                         *
+* Description: Export to a memory id, the given data and its type info *
+*----------------------------------------------------------------------*
+*-------------------------CHANGE HISTORY-------------------------------*
+*----------------------------------------------------------------------*
+* Developer:                                                           *
+* Date:                                                                *
+* Reference Change/Incident:                                           *
+* Change Indicator:                                                    *
+* Description:                                                         *
+*----------------------------------------------------------------------*
+
+*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+    IF data_table IS NOT INITIAL.
+      "EXPORT data = data_table TO MEMORY ID memory_id.
+
+      "Get the components of the internal table
+      "This contains all components as reference of CL_ABAP_ELEMDESCR
+      DATA(component_list) = zcl_abap_helper=>construct_component_list( it_itab = data_table ).
+
+      "We cannot export REFERENCES or any data/table/structure containing references
+      "Resolve the references into individual elementary data
+      DATA(component_list_elementary) = VALUE elementary_fld_desc(
+        FOR component_ref IN component_list
+                          INDEX INTO idx
+        (
+          index       = idx
+          name        = component_ref-name
+          type_kind   = component_ref-type->type_kind
+          length      = component_ref-type->length "This is byte length
+          decimals    = component_ref-type->decimals
+        )
+      ).
+      "Export the elementary component list
+      EXPORT data = data_table
+             component_list = component_list_elementary TO MEMORY ID memory_id.
+
+    ELSEIF data IS NOT INITIAL.
+      EXPORT data = data TO MEMORY ID memory_id.
+
+      "<TBD>Get type description of the data
+      "<TBD>Export details to memory ID
+    ENDIF.
+
+
+
+*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>F4HELP_PERIOD
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] FIELD_TO_UPDATE                TYPE        CHAR04 (default ='LOW')
+* | [<-->] PERIODS                        TYPE        RANGE_PERIOD
+* | [<-->] PERIOD                         TYPE        LINE_PERIOD
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD f4help_period.
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      21 Jul 2026                                               *
+* Reference Change/Incident:  5000008297                               *
+* Change Indicator: 5000008297-Joshua-00000000                         *
+* Description: F4 Help to select a month/year                          *
+*----------------------------------------------------------------------*
+*-------------------------CHANGE HISTORY-------------------------------*
+*----------------------------------------------------------------------*
+* Developer:                                                           *
+* Date:                                                                *
+* Reference Change/Incident:                                           *
+* Change Indicator:                                                    *
+* Description:                                                         *
+*----------------------------------------------------------------------*
+
+*>>>Start of Changes-5000008297-Joshua-00000000-23 Jul 2026
+
+    ASSIGN periods[ 1 ] TO FIELD-SYMBOL(<period_line>).
+    IF sy-subrc <> 0.
+      INSERT INITIAL LINE INTO periods ASSIGNING <period_line>.
+    ENDIF.
+
+    ASSIGN COMPONENT field_to_update OF STRUCTURE <period_line> TO FIELD-SYMBOL(<period_value>).
+    IF <period_value> IS INITIAL.
+      <period_value> = sy-datum+0(6).
+    ENDIF.
+
+
+    CALL FUNCTION 'POPUP_TO_SELECT_MONTH'
+      EXPORTING
+        actual_month               = <period_value>
+*       FACTORY_CALENDAR           = ' '
+*       HOLIDAY_CALENDAR           = ' '
+*       LANGUAGE                   = SY-LANGU
+*       START_COLUMN               = 8
+*       START_ROW                  = 5
+      IMPORTING
+        selected_month             = <period_value>
+*       RETURN_CODE                =
+      EXCEPTIONS
+        factory_calendar_not_found = 1
+        holiday_calendar_not_found = 2
+        month_not_found            = 3
+        OTHERS                     = 4.
+    IF sy-subrc <> 0.
+* Implement suitable error handling here
+    ENDIF.
+
+
+    period = periods[ 1 ].
+*<<<End of Changes-5000008297-Joshua-00000000-23 Jul 2026
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>GET_ELEMENT_DESCRIPTOR
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] ELEMENTARY_COMPONENT           TYPE        ELEMENTARY_FLD_DESC_LINE
+* | [<-()] ELEMENT_DESCRIPTOR             TYPE REF TO CL_ABAP_ELEMDESCR
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD get_element_descriptor.
+*----------------------------------------------------------------------*
+* Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
+* Date:      21 Jul 2026                                               *
+* Reference Change/Incident:  5000008297                               *
+* Change Indicator: 5000008297-Joshua-00000000                         *
+* Description: Create element description using given elementary info. *
+*----------------------------------------------------------------------*
+*-------------------------CHANGE HISTORY-------------------------------*
+*----------------------------------------------------------------------*
+* Developer:                                                           *
+* Date:                                                                *
+* Reference Change/Incident:                                           *
+* Change Indicator:                                                    *
+* Description:                                                         *
+*----------------------------------------------------------------------*
+
+*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+    "For character fields, the length returned is byte length
+    "In unicode system (or any dependent cases) this will be double the actual length we need
+    DATA(char_length) = elementary_component-length / cl_abap_char_utilities=>charsize.
+    CASE elementary_component-type_kind.
+
+      WHEN cl_abap_elemdescr=>typekind_char."Internal type C.
+        element_descriptor = cl_abap_elemdescr=>get_c( p_length = char_length ).
+      WHEN cl_abap_elemdescr=>typekind_clike."Internal Type (Data Object).
+        element_descriptor = cl_abap_elemdescr=>get_c( p_length = char_length ).
+      WHEN cl_abap_elemdescr=>typekind_date."Internal type D.
+        element_descriptor = cl_abap_elemdescr=>get_d( ).
+      WHEN cl_abap_elemdescr=>typekind_decfloat16."Internal Type a (Decimal Floating Point, 16 Decimal Places).
+        element_descriptor = cl_abap_elemdescr=>get_decfloat16( ).
+      WHEN cl_abap_elemdescr=>typekind_decfloat34."Internal Type e (Decimal Floating Point, 34 Decimal Places).
+        element_descriptor = cl_abap_elemdescr=>get_decfloat34( ).
+      WHEN cl_abap_elemdescr=>typekind_float."Internal type F.
+        element_descriptor = cl_abap_elemdescr=>get_f( ).
+      WHEN cl_abap_elemdescr=>typekind_hex."Internal type X.
+        element_descriptor = cl_abap_elemdescr=>get_x( p_length = char_length ).
+      WHEN cl_abap_elemdescr=>typekind_int."Internal type I.
+        element_descriptor = cl_abap_elemdescr=>get_i( ).
+      WHEN cl_abap_elemdescr=>typekind_num."Internal type N.
+        element_descriptor = cl_abap_elemdescr=>get_n( p_length = char_length ).
+      WHEN cl_abap_elemdescr=>typekind_packed."Internal type P.
+        element_descriptor = cl_abap_elemdescr=>get_p(
+        p_length = elementary_component-length
+        p_decimals = elementary_component-decimals
+        ).
+      WHEN cl_abap_elemdescr=>typekind_string."Internal type g (character string).
+        element_descriptor = cl_abap_elemdescr=>get_string( ).
+      WHEN cl_abap_elemdescr=>typekind_time."Internal type T.
+        element_descriptor = cl_abap_elemdescr=>get_t( ).
+      WHEN cl_abap_elemdescr=>typekind_xstring."Internal type y (byte string).
+        element_descriptor = cl_abap_elemdescr=>get_xstring( ).
+
+        "~~~Handler to be developed (If possible)~~~
+      WHEN cl_abap_elemdescr=>typekind_class."Internal Type (Class).
+      WHEN cl_abap_elemdescr=>typekind_csequence."Internal Type (Data Object).
+      WHEN cl_abap_elemdescr=>typekind_data."Internal Type (Data Object).
+      WHEN cl_abap_elemdescr=>typekind_decfloat."Internal Type (Generic Decimal Floating Point Type).
+      WHEN cl_abap_elemdescr=>typekind_dref."Internal Type l (Data Object Reference).
+      WHEN cl_abap_elemdescr=>typekind_int1."Internal Type b (1 Byte Integer).
+      WHEN cl_abap_elemdescr=>typekind_int2."Internal Type s (2 Byte Integer).
+      WHEN cl_abap_elemdescr=>typekind_intf."Internal Type (Interface).
+      WHEN cl_abap_elemdescr=>typekind_iref."Internal Type m (Instance Reference).
+      WHEN cl_abap_elemdescr=>typekind_numeric."Internal Type (Data Object).
+      WHEN cl_abap_elemdescr=>typekind_oref."Internal type r (object reference).
+      WHEN cl_abap_elemdescr=>typekind_simple."Internal Type (Data Object).
+      WHEN cl_abap_elemdescr=>typekind_struct1."Internal type u (flat structure).
+      WHEN cl_abap_elemdescr=>typekind_struct2."Internal type v (deep structure).
+      WHEN cl_abap_elemdescr=>typekind_table."Internal Type h (Internal Table).
+      WHEN cl_abap_elemdescr=>typekind_w."Internal type w (wide character).
+      WHEN cl_abap_elemdescr=>typekind_xsequence."Internal Type (Data Object).
+      WHEN cl_abap_elemdescr=>typekind_bref."Internal Type for Boxed Components/Attributes.
+        "~~~Cannot be handled~~~
+      WHEN cl_abap_elemdescr=>typekind_any."Internal Type (Data Object or Object).
+    ENDCASE.
+*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+  ENDMETHOD.
+ENDCLASS.
