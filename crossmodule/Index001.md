@@ -1,0 +1,11 @@
+# Classes
+## [ZCL_ABAP_HELPER_004](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004)
+### [Definition](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L1)
+### [Public Section](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L5)
+### [Types](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L7)
+### [Constants](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L19)
+### [Implementation](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L64)
+#### [CALL_REPORT_GET_OUTPUT](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L67)
+#### [CREATE_ITAB_DYNAMIC](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L226)
+#### [EXPORT_DATA_AND_TYPE_TO_MEMORY](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L315)
+#### [F4HELP_PERIOD](https://github.com/YehoshuaBinElRoi/ABAPSnippets/blob/3da9b2ce3e34244072fcc1fad2196caca337839a/crossmodule/ZCL_ABAP_HELPER_004#L377)
