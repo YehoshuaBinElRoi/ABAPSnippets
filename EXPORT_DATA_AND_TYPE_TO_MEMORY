@@ -1,0 +1,41 @@
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Static Public Method ZCL_ABAP_HELPER_004=>EXPORT_DATA_AND_TYPE_TO_MEMORY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] DATA_TABLE                     TYPE        ANY TABLE(optional)
+* | [--->] DATA                           TYPE        ANY(optional)
+* | [--->] MEMORY_ID                      TYPE        CHAR30
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD export_data_and_type_to_memory.
+
+    IF data_table IS NOT INITIAL.
+      "EXPORT data = data_table TO MEMORY ID memory_id.
+
+      "Get the components of the internal table
+      "This contains all components as reference of CL_ABAP_ELEMDESCR
+      DATA(component_list) = zcl_abap_helper=>construct_component_list( it_itab = data_table ).
+
+      "We cannot export REFERENCES or any data/table/structure containing references
+      "Resolve the references into individual elementary data
+      DATA(component_list_elementary) = VALUE elementary_fld_desc(
+        FOR component_ref IN component_list
+                          INDEX INTO idx
+        (
+          index       = idx
+          name        = component_ref-name
+          type_kind   = component_ref-type->type_kind
+          length      = component_ref-type->length "This is byte length
+          decimals    = component_ref-type->decimals
+        )
+      ).
+      "Export the elementary component list
+      EXPORT data = data_table
+             component_list = component_list_elementary TO MEMORY ID memory_id.
+
+    ELSEIF data IS NOT INITIAL.
+      EXPORT data = data TO MEMORY ID memory_id.
+
+      "<TBD>Get type description of the data
+      "<TBD>Export details to memory ID
+    ENDIF.
+
+  ENDMETHOD.
