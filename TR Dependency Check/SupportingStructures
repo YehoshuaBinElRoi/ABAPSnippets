@@ -1,0 +1,27 @@
+YST_OBJ_STAT
+TR Status at object level
+
+PGMID	Types	PGMID
+OBJECT	Types	TROBJTYPE
+OBJ_NAME	Types	TROBJ_NAME
+SEQ	Types	INT4
+TRKORR	Types	TRKORR
+.INCLUDE	Types	YST_SUB_STAT
+
+YST_SUB_STAT
+Bit containing the dates and times related to TR activities
+
+DEV_EXP_DT	Types	DATS	DATS	8	0	Field of type DATS
+DEV_EXP_TI	Types	TIMS	TIMS	6	0	Field of type TIMS
+QAS_IMP_DT	Types	DATS	DATS	8	0	Field of type DATS
+QAS_IMP_TI	Types	TIMS	TIMS	6	0	Field of type TIMS
+PRD_IMP_DT	Types	DATS	DATS	8	0	Field of type DATS
+PRD_IMP_TI	Types	TIMS	TIMS	6	0	Field of type TIMS
+STATUS	Types	CHAR30	CHAR	30	0	30 Characters
+ROOT_TRKORR	Types	TRKORR	CHAR	20	0	Request/Task
+
+YST_TR_STAT
+TR Status
+
+TRKORR	Types	TRKORR
+.INCLUDE	Types	YST_SUB_STAT
