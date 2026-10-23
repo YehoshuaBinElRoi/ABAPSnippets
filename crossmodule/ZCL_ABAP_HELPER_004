@@ -79,8 +79,8 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: Call an ABAP report and return the output               *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -92,7 +92,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Joshua-00000000-21 Jul 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-21 Jul 2026
 
 
 
@@ -218,7 +218,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 
     ELSE.
     ENDIF.
-*<<<End of Changes-5000008297-Joshua-00000000-21 Jul 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-21 Jul 2026
   ENDMETHOD.
 
 
@@ -243,16 +243,16 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      25th Feb 2026                                             *
-* Reference Change/Incident:  5000008261                               *
-* Change Indicator: 5000008261-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: Accept component list containing individual fields as   *
 *              input                                                   *
 *----------------------------------------------------------------------*
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: Create internal table using type name, elementary       *
 *              component list                                          *
 *----------------------------------------------------------------------*
@@ -266,13 +266,13 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 
     FIELD-SYMBOLS: <lfs_struct_out> TYPE any.
 
-*>>>Start of Changes-5000008220-Joshua-00000000-25th Feb 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-25th Feb 2026
     IF components IS SUPPLIED AND
        components IS NOT INITIAL. "If field list is provided, use it
       lt_components = components.
     ELSEIF structures IS SUPPLIED AND
            structures IS NOT INITIAL.
-*<<<End of Changes-5000008220-Joshua-00000000-25th Feb 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-25th Feb 2026
       "Construct a table of components
       LOOP AT structures INTO DATA(ls_structures).
         DATA(lv_idx) = sy-tabix.
@@ -285,7 +285,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
           )
         ).
       ENDLOOP.
-*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
     ELSEIF type_name IS NOT INITIAL.
       lo_struct_out ?= cl_abap_typedescr=>describe_by_name( type_name ).
       lt_components = lo_struct_out->get_components( ).
@@ -298,7 +298,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
           type = get_element_descriptor( element )
         )
       ).
-*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
     ENDIF.
     "Construct the structure type which includes the individual structures
     lo_struct_out = cl_abap_structdescr=>create( lt_components ).
@@ -322,8 +322,8 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: Export to a memory id, the given data and its type info *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -335,7 +335,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
     IF data_table IS NOT INITIAL.
       "EXPORT data = data_table TO MEMORY ID memory_id.
 
@@ -369,7 +369,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 
 
 
-*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
   ENDMETHOD.
 
 
@@ -384,8 +384,8 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: F4 Help to select a month/year                          *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -397,7 +397,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Joshua-00000000-23 Jul 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-23 Jul 2026
 
     ASSIGN periods[ 1 ] TO FIELD-SYMBOL(<period_line>).
     IF sy-subrc <> 0.
@@ -432,7 +432,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 
 
     period = periods[ 1 ].
-*<<<End of Changes-5000008297-Joshua-00000000-23 Jul 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-23 Jul 2026
   ENDMETHOD.
 
 
@@ -446,8 +446,8 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Joshua AAAAAAAAAAAAA (00000000)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Joshua-00000000                         *
+* Reference Change/Incident:  JHOSDJKL                               *
+* Change Indicator: JHOSDJKL-Joshua-00000000                         *
 * Description: Create element description using given elementary info. *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -459,7 +459,7 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*>>>Start of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
     "For character fields, the length returned is byte length
     "In unicode system (or any dependent cases) this will be double the actual length we need
     DATA(char_length) = elementary_component-length / cl_abap_char_utilities=>charsize.
@@ -517,6 +517,6 @@ CLASS ZCL_ABAP_HELPER_004 IMPLEMENTATION.
         "~~~Cannot be handled~~~
       WHEN cl_abap_elemdescr=>typekind_any."Internal Type (Data Object or Object).
     ENDCASE.
-*<<<End of Changes-5000008297-Joshua-00000000-22 Jul 2026
+*<<<End of Changes-JHOSDJKL-Joshua-00000000-22 Jul 2026
   ENDMETHOD.
 ENDCLASS.
