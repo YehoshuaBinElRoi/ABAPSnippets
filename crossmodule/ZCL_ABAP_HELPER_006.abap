@@ -347,8 +347,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      2nd Mar 2026                                              *
-* Reference Change/Incident:  5000008282                               *
-* Change Indicator: 5000008282-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Call an existing F4 help                                *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -362,7 +362,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
 
     "Courtesy: https://keremkoseoglu.wordpress.com/2009/03/25/how-to-call-a-sap-search-help-manually/
-*>>>Start of Changes-5000008282-Jonahs-XNSHDYK-30 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-30 Sep 2026
     DATA: shlp          TYPE shlp_descr,
 
           return_values TYPE STANDARD TABLE OF ddshretval WITH DEFAULT KEY.
@@ -407,7 +407,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         WHEN retvalfield. ret_value = <return_value>-fieldval.
       ENDCASE.
     ENDLOOP.
-*<<<End of Changes-5000008282-Jonahs-XNSHDYK-30 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-30 Sep 2026
   ENDMETHOD.
 
 
@@ -426,8 +426,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Call an ABAP report and return the output               *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -439,7 +439,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-21 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Jul 2026
 
 
 
@@ -566,7 +566,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
     ELSE.
     ENDIF.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-21 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Jul 2026
   ENDMETHOD.
 
 
@@ -578,8 +578,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Call a report from within itself.                       *
 *              Useful when we are N screens deep and want to go to     *
 *              input screen                                            *
@@ -593,7 +593,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-19 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-19 Oct 2026
     DATA: parameters TYPE ty_rsparams.
     "Get the inputs specified on selection screen
     CALL FUNCTION 'RS_REFRESH_FROM_SELECTOPTIONS'
@@ -617,7 +617,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
                         VIA SELECTION-SCREEN.
     ENDIF.
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-19 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-19 Oct 2026
   ENDMETHOD.
 
 
@@ -631,8 +631,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: SPOC to download POs and invoices for a vendor          *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -644,7 +644,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-11 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-11 Sep 2026
     IF job_list IS NOT INITIAL.
       DATA(job_list_lcl) = job_list.
       SORT job_list_lcl BY jobname jobcount.
@@ -664,7 +664,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
 
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-11 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-11 Sep 2026
   ENDMETHOD.
 
 
@@ -680,8 +680,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Check if directory exists in Pres. or Appl. Server      *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -693,7 +693,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-04 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-04 Sep 2026
 
     DATA: appl_srv_dir_list TYPE eps2filis.
 
@@ -760,7 +760,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         ).
       ENDIF.
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-04 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-04 Sep 2026
 
   ENDMETHOD.
 
@@ -780,8 +780,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Pick and return a valid folder path in appl. server     *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -793,7 +793,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-26 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-26 Aug 2026
     "The path to the preferred directory
     IF preferred_dir IS NOT INITIAL.
       "Get the directory path mapped to the alias
@@ -868,7 +868,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       ENDIF.
     ENDIF.
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-26 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-26 Aug 2026
   ENDMETHOD.
 
 
@@ -883,8 +883,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Conver a 255 char Bin to 1024 char bin                  *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -896,7 +896,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
     DATA: xstring_data TYPE xstring.
     CALL FUNCTION 'SCMS_BINARY_TO_XSTRING'
       EXPORTING
@@ -911,7 +911,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         buffer     = xstring_data
       TABLES
         binary_tab = bin_1024.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
   ENDMETHOD.
 
 
@@ -925,8 +925,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Convert a Range of Dates to String representation       *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -938,7 +938,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
     CHECK dates IS NOT INITIAL.
 
     DATA(dates_lcl) = dates.
@@ -964,7 +964,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
     ENDIF.
 
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
   ENDMETHOD.
 
 
@@ -991,16 +991,16 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Convert a Range of Anything to String representation    *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Oct 2026                                               *
-* Reference Change/Incident:  6000115929                               *
-* Change Indicator: 6000115929-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Interpret Individual lines                              *
 *----------------------------------------------------------------------*
 *----------------------------------------------------------------------*
@@ -1011,7 +1011,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
 
     DATA: current_sign   TYPE char01,
           current_option TYPE char02,
@@ -1026,7 +1026,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
     ASSIGN ref_range_lcl->* TO <range_lcl>.
     <range_lcl> = range.
 
-*>>>Start of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
     IF add_all_lines = abap_true.
       SORT <range_lcl> BY ('SIGN') ('OPTION') ('LOW') ('HIGH').
       LOOP AT <range_lcl> ASSIGNING FIELD-SYMBOL(<range_line>).
@@ -1102,7 +1102,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
       ENDLOOP.
     ELSE.
-*<<<End of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
       SORT <range_lcl> BY ('LOW') ('HIGH').
       ASSIGN <range_lcl>[ 1 ] TO FIELD-SYMBOL(<first_entry>).
       ASSIGN <range_lcl>[ lines( <range_lcl> ) ] TO FIELD-SYMBOL(<last_entry>).
@@ -1121,13 +1121,13 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       IF <end> IS NOT INITIAL.
         fmt_string = |{ fmt_string } To { <end> }|.
       ENDIF.
-*>>>Start of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
     ENDIF.
 
     fmt_string = |{ fmt_string } { unit }|.
 
-*<<<End of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
   ENDMETHOD.
 
 
@@ -1142,8 +1142,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Create directory path                                   *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1155,7 +1155,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
 
     DATA: al11_create_status   TYPE extcmdexex-status,
           al11_create_exitcode TYPE extcmdexex-exitcode,
@@ -1299,7 +1299,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       ENDIF.
 
     ENDLOOP.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
   ENDMETHOD.
 
 
@@ -1325,16 +1325,16 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      25th Feb 2026                                             *
-* Reference Change/Incident:  5000008261                               *
-* Change Indicator: 5000008261-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Accept component list containing individual fields as   *
 *              input                                                   *
 *----------------------------------------------------------------------*
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Create internal table using type name, elementary       *
 *              component list                                          *
 *----------------------------------------------------------------------*
@@ -1349,13 +1349,13 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
     FIELD-SYMBOLS: <lfs_struct_out> TYPE any.
 
-*>>>Start of Changes-5000008220-Jonahs-XNSHDYK-25th Feb 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-25th Feb 2026
     IF components IS SUPPLIED AND
        components IS NOT INITIAL. "If field list is provided, use it
       lt_components = components.
     ELSEIF structures IS SUPPLIED AND
            structures IS NOT INITIAL.
-*<<<End of Changes-5000008220-Jonahs-XNSHDYK-25th Feb 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-25th Feb 2026
       "Construct a table of components
       LOOP AT structures INTO DATA(ls_structures).
         DATA(lv_idx) = sy-tabix.
@@ -1368,7 +1368,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
           )
         ).
       ENDLOOP.
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
     ELSEIF type_name IS NOT INITIAL.
       lo_struct_out ?= cl_abap_typedescr=>describe_by_name( type_name ).
       lt_components = lo_struct_out->get_components( ).
@@ -1431,17 +1431,17 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
 
 
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
     ENDIF.
     "Construct the structure type which includes the individual structures
     lo_struct_out = cl_abap_structdescr=>create( lt_components ).
     CREATE DATA lo_struct_out_dataref TYPE HANDLE lo_struct_out.
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-27 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-27 Jul 2026
     IF get_wa = abap_true."User requested a work area instead of table
       dataref = lo_struct_out_dataref.
       RETURN.
     ENDIF.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-27 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-27 Jul 2026
     ASSIGN lo_struct_out_dataref->* TO <lfs_struct_out>.
     "Construct the table type
     CREATE DATA dataref LIKE TABLE OF <lfs_struct_out>.
@@ -1463,8 +1463,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Display a PDF as preview in a separate window           *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1476,7 +1476,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
     DATA: lv_bin_filesize TYPE i,
           lv_content      TYPE xstring,
           lv_url(255),
@@ -1548,7 +1548,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       url = lv_url
       in_place = abap_true
     ).
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
   ENDMETHOD.
 
 
@@ -1566,8 +1566,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Download XSTRING into a PDF file                        *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1579,7 +1579,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
     DATA(binary_content) = VALUE tabtype_solix( ).
     DATA(binary_length)  = VALUE i( ).
 
@@ -1681,7 +1681,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       ENDIF.
     ENDIF.
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
   ENDMETHOD.
 
 
@@ -1698,8 +1698,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Export to a memory id, the given data and its type info *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1711,7 +1711,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
     IF data_table IS SUPPLIED.
       "Get the components of the internal table
       "This contains all components as reference of CL_ABAP_ELEMDESCR
@@ -1753,7 +1753,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
 
 
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
   ENDMETHOD.
 
 
@@ -1769,8 +1769,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: F4 Help to select a month/year                          *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1782,7 +1782,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-23 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-23 Jul 2026
 
     DATA: selected_period TYPE spmon.
 
@@ -1807,7 +1807,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       <period_value> = selected_period.
       period = periods[ 1 ].
     ENDIF.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-23 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-23 Jul 2026
   ENDMETHOD.
 
 
@@ -1825,8 +1825,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: F4 Help for File Path                                   *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1838,7 +1838,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
 
     DATA: startpath         TYPE string,
           fullpath          TYPE string,
@@ -1873,7 +1873,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
 
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
       IF open_mode = abap_true.
         CALL METHOD cl_gui_frontend_services=>file_open_dialog
           EXPORTING
@@ -1901,7 +1901,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         ENDIF.
       ELSE.
         "File Save dialog so user can select the Download location
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-15 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-15 Oct 2026
         CALL METHOD cl_gui_frontend_services=>file_save_dialog
           EXPORTING
             window_title         = window_title
@@ -1925,7 +1925,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       ENDIF.
     ENDIF.
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-24 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-24 Aug 2026
   ENDMETHOD.
 
 
@@ -1945,8 +1945,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Fill month and year into dropdowns                      *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -1958,7 +1958,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-03 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-03 Aug 2026
     IF t009-xkale = abap_true. "This is a regular calendar year
       "Add calendar months to the dropdown
       months_dropdown = VALUE vrm_values(
@@ -1987,7 +1987,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
             ( key = year_001 text = year_001 )
       ).
     ENDIF.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-03 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-03 Aug 2026
   ENDMETHOD.
 
 
@@ -2001,8 +2001,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Convert Range of Fiscal Years to range of dates         *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2014,7 +2014,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-29 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-29 Sep 2026
     DATA: date_range LIKE LINE OF range_dates.
 
     LOOP AT range_years INTO DATA(year_range).
@@ -2052,7 +2052,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       APPEND date_range TO range_dates.
 
     ENDLOOP.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-29 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-29 Sep 2026
   ENDMETHOD.
 
 
@@ -2066,8 +2066,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Create element description using given elementary info. *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2079,7 +2079,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
     "For character fields, the length returned is byte length
     "In unicode system (or any dependent cases) this will be double the actual length we need
     DATA(char_length) = elementary_component-length / cl_abap_char_utilities=>charsize.
@@ -2137,7 +2137,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         "~~~Cannot be handled~~~
       WHEN cl_abap_elemdescr=>typekind_any."Internal Type (Data Object or Object).
     ENDCASE.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-22 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-22 Jul 2026
   ENDMETHOD.
 
 
@@ -2151,8 +2151,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Get the file separator                                  *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2164,7 +2164,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-04 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-04 Sep 2026
     IF on_appl_server = abap_true.
       IF sy-opsys CS 'Windows'.
         separator = '\'.
@@ -2176,7 +2176,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       CHANGING
         file_separator = separator ).
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-04 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-04 Sep 2026
   ENDMETHOD.
 
 
@@ -2193,8 +2193,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Get dates of the fiscal year                            *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2206,7 +2206,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-29 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-29 Sep 2026
     IF fiscal_year_variant IS SUPPLIED.       "If caller has provided a fiscal year variant
       DATA(calendar_variant) = fiscal_year_variant. "Use it
     ELSE. "
@@ -2242,7 +2242,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
     IF sy-subrc <> 0.
 
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-29 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-29 Sep 2026
   ENDMETHOD.
 
 
@@ -2256,8 +2256,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      25 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Get the folder mapped to a user defined directory name  *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2269,7 +2269,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-25 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-25 Aug 2026
     "Try retrieving from user directories
     SELECT SINGLE dirname
                    FROM user_dir
@@ -2286,7 +2286,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         value = path
       ).
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-25 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-25 Aug 2026
   ENDMETHOD.
 
 
@@ -2305,8 +2305,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Get period definition information                       *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2318,7 +2318,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-03 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-03 Aug 2026
     DATA: year_range      TYPE RANGE OF char04,
           month_range     TYPE RANGE OF char02,
           day_range       TYPE RANGE OF char02,
@@ -2402,7 +2402,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
                 spras = @sy-langu.
 
     ENDIF.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-03 Aug 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-03 Aug 2026
   ENDMETHOD.
 
 
@@ -2420,8 +2420,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Time difference in Calendar units                       *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2433,7 +2433,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
     "Convert the input date/time to time stamps
     CONVERT DATE start_date TIME start_time
       INTO TIME STAMP DATA(start_ts)
@@ -2457,7 +2457,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
         duration = duration
       ).
     ENDIF.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
   ENDMETHOD.
 
 
@@ -2470,8 +2470,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Check if we are in BG mode                              *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2483,7 +2483,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-01 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-01 Sep 2026
 
     DATA: bg_task_info TYPE arfctid.
 
@@ -2506,7 +2506,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
     ENDIF.
 
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-01 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-01 Sep 2026
   ENDMETHOD.
 
 
@@ -2523,8 +2523,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Construct Value + Text +Suffix                          *
 *              e.g., 1 Day / 24 Years / 1 Year
 *----------------------------------------------------------------------*
@@ -2537,7 +2537,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
     IF consider_zero EQ abap_false AND "Do not process if value is 0
        value IS INITIAL. "Value is 0
       RETURN.
@@ -2554,7 +2554,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       suffixed = |{ suffixed } |.
     ENDIF.
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
   ENDMETHOD.
 
 
@@ -2568,8 +2568,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Convert Object to string                                *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2581,11 +2581,11 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
     CALL TRANSFORMATION id
          SOURCE xml = serialized
          RESULT obj = object.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
   ENDMETHOD.
 
 
@@ -2599,8 +2599,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Convert Object to string                                *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2612,11 +2612,11 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
     CALL TRANSFORMATION id
          SOURCE obj = object
          RESULT xml = serialized.
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
   ENDMETHOD.
 
 
@@ -2630,8 +2630,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Jul 2026                                               *
-* Reference Change/Incident:  5000008297                               *
-* Change Indicator: 5000008297-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Dynamically create deep structure                       *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2643,7 +2643,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
     DATA: nested_comps_for_ref  TYPE cl_abap_structdescr=>component_table,
           nested_element_detail TYPE element_line_detailed,
           nested_components     TYPE element_list_detailed.
@@ -2760,7 +2760,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
     nested_component_descriptors = unique_nested_components.
 
-*<<<End of Changes-5000008297-Jonahs-XNSHDYK-28 Jul 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-28 Jul 2026
 
   ENDMETHOD.
 
@@ -2775,8 +2775,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Split Seconds into Days-Hours-Minutes-Seconds           *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2788,7 +2788,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
     "Number of Whole days
     duration-days = seconds DIV seconds_in_a_day.
 
@@ -2806,7 +2806,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 
     "Seconds remaining
     duration-seconds = remaining_seconds MOD seconds_in_a_minute.
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-13 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-13 Oct 2026
   ENDMETHOD.
 
 
@@ -2822,8 +2822,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      27 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Split the full path into file name and file path        *
 *----------------------------------------------------------------------*
 *-------------------------CHANGE HISTORY-------------------------------*
@@ -2835,7 +2835,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 * Description:                                                         *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-07 Sep 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-07 Sep 2026
     DATA(separator) = get_file_separator( on_appl_server ).
 
     " 1. Extract the file name (Finds the last segment after the last '/')
@@ -2845,7 +2845,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
     folder_path = substring( val = full_path
                              len = strlen( full_path ) - strlen( file_name ) ).
 
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-07 Sep 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-07 Sep 2026
   ENDMETHOD.
 
 
@@ -2860,12 +2860,12 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Oct 2026                                               *
-* Reference Change/Incident:  6000115929                               *
-* Change Indicator: 6000115929-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Split a string into N strings                           *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
     CHECK string IS NOT INITIAL.
 
     DATA(string_to_parse) = string.
@@ -2888,7 +2888,7 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       ENDIF.
 
     ENDDO.
-*<<<End of Changes-6000115929-Jonahs-XNSHDYK-21 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
   ENDMETHOD.
 
 
@@ -2904,8 +2904,8 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      12 Aug 2026                                               *
-* Reference Change/Incident:  5000008399                               *
-* Change Indicator: 5000008399-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Print some document pointed by TNAPR and Get the OTF out*
 *              Dependency:
 *               The print program triggered must return the OTF in     *
@@ -2915,13 +2915,13 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
 *----------------------------------------------------------------------*
 * Developer: Ange Jonahs jab marijuana (XNSHDYK)                       *
 * Date:      21 Oct 2026                                               *
-* Reference Change/Incident:  6000115929                               *
-* Change Indicator: 6000115929-Jonahs-XNSHDYK                         *
+* Reference Change/Incident:  NASHDIMN                               *
+* Change Indicator: NASHDIMN-Jonahs-XNSHDYK                         *
 * Description: Altering dependent constant memory ID and using input   *
 *              parameter instead                                       *
 *----------------------------------------------------------------------*
 
-*>>>Start of Changes-5000008399-Jonahs-XNSHDYK-18 Aug 2026
+*>>>Start of Changes-NASHDIMN-Jonahs-XNSHDYK-18 Aug 2026
 
     DATA(otf_data) = VALUE tt_itcoo( ).
 
@@ -2933,9 +2933,9 @@ CLASS ZCL_ABAP_HELPER_006 IMPLEMENTATION.
       .
 
     IMPORT otf_data = otf[]
-           FROM MEMORY ID memid."6000115929-Jonahs-XNSHDYK-21 Oct 2026
+           FROM MEMORY ID memid."NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
     IMPORT message = message
-           FROM MEMORY ID memid."6000115929-Jonahs-XNSHDYK-21 Oct 2026
-*<<<End of Changes-5000008399-Jonahs-XNSHDYK-18 Aug 2026
+           FROM MEMORY ID memid."NASHDIMN-Jonahs-XNSHDYK-21 Oct 2026
+*<<<End of Changes-NASHDIMN-Jonahs-XNSHDYK-18 Aug 2026
   ENDMETHOD.
 ENDCLASS.
